@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="fr">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Wheel Spin Game</title>
+    <link rel="stylesheet" type="text/css" href="styles.css">
+</head>
+
+<body>
+    <div class="navbar" style="display: flex; justify-content: center; align-items: center;">
+        <div>
+            <a href="../Accueil/accueil.html">Accueil</a>
+        </div>
+        <div style="flex-grow: 1; text-align: center;">
+            <a href="../BestRoues/bestRoues.html">Best Roues</a>
+            <a href="../MesRoues/mesRoues.html">Mes Roues</a>
+        </div>
+        <div>
+            <a href="../Login/login.html" style="margin-left: auto;">Login</a>
+        </div>
+    </div>
+    <div class="container">
+        <h1>Login</h1>
+        <div class="loginContainer">
+            <div class="loginBox">
+                <div class="loginContent">
+                    <div class="input-block">
+                        <label for="username" class="input-label">Nom d'utilisateur</label>
+                        <input type="text" name="email" id="username" placeholder="Nom d'utilisateur...">
+                    </div>
+                    <div class="input-block">
+                        <label for="password" class="input-label">Mot de Passe</label>
+                        <input type="password" name="password" id="password" placeholder="Mot de passe...">
+                    </div>
+                    <button class="input-button" id="loginBtn">Login</button>
+                    <p class="sign-up">Vous n'avez pas de compte ? <a href="../Register/register.html">Inscrivez-vous
+                            maintenant</a></p>
+                </div>
+            </div>
+        </div>
+    </div>
+    <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+    <script>
+        document.getElementById('loginBtn').onclick = function () {
+            const username = document.getElementById('username').value;
+            const password = document.getElementById('password').value;
+
+            // Perform the Axios POST request
+            axios.post('http://localhost:3001/login', {
+                username: username,
+                password: password
+            }, {
+                headers: {
+                    'Content-Type': 'application/json;charset=UTF-8',
+                }
+            })
+                .then(function (response) {
+                    // Check the server's response
+                    if (response.data.message) {
+                        console.log("Login successful");
+                        localStorage.setItem('username', username);
+                        window.location.href = "../Accueil/accueil.html";
+                        // Redirect or show success message here
+                        // Example: window.location.href = 'path/to/redirect/on/success';
+                    } else {
+                        console.log("Invalid credentials");
+                        // Show error message to the user
+                        // Example: alert('Invalid username or password');
+                    }
+                })
+                .catch(function (error) {
+                    console.error('Login error:', error);
+                    // Handle errors such as network issues
+                    // Example: alert('There was a problem with your login');
+                });
+        }
+
+    </script>
+</body>
+
+</html>
