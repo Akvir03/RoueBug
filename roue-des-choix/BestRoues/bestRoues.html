@@ -2,46 +2,67 @@
 <html lang="fr">
 
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Wheel Spin Game</title>
-  <link rel="stylesheet" type="text/css" href="styles.css">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Wheel Spin Game</title>
+    <link rel="stylesheet" type="text/css" href="styles.css">
 </head>
 
 <body>
-  <div class="navbar" style="display: flex; justify-content: center; align-items: center;">
+<div class="navbar" style="display: flex; justify-content: center; align-items: center;">
     <div>
-      <a href="../Accueil/accueil.html">Accueil</a>
+        <a href="../Accueil/accueil.html">Accueil</a>
     </div>
     <div style="flex-grow: 1; text-align: center;">
-      <a href="../BestRoues/bestRoues.html">Best Roues</a>
-      <a href="../MesRoues/mesRoues.html">Mes Roues</a>
+        <a href="../BestRoues/bestRoues.html">Best Roues</a>
+        <a href="../MesRoues/mesRoues.html">Mes Roues</a>
     </div>
     <div>
-      <a href="../Login/login.html" style="margin-left: auto;">Login</a>
+        <a href="../Login/login.html" style="margin-left: auto;">Login</a>
     </div>
-  </div>
-  <div class="container">
-    <h1>Spin the Wheel!</h1>
-    <div class="input-container">
-      <input type="text" id="restaurant1" placeholder="Restaurant 1">
-      <input type="text" id="restaurant2" placeholder="Restaurant 2">
-      <input type="text" id="restaurant3" placeholder="Restaurant 3">
-      <input type="text" id="restaurant4" placeholder="Restaurant 4">
-      <input type="text" id="restaurant5" placeholder="Restaurant 5">
-      <input type="text" id="restaurant6" placeholder="Restaurant 6">
-      <input type="text" id="restaurant7" placeholder="Restaurant 7">
-      <input type="text" id="restaurant8" placeholder="Restaurant 8">
-      <button id="submitBtn" class="btn-spin">Submit</button>
-      <button id="spinBtn" class="btn-spin">Spin</button>
-    </div>
-    <div class="wheel-container">
-      <div class="arrow"></div>
-      <div id="wheel" class="wheel"></div>
-    </div>
-    <div id="legend" class="legend"></div>
-  </div>
-  <script src="script.js"></script>
+</div>
+<div class="container">
+    <h1>Mes roues !</h1>
+    <table id="tableauMesRoues" class="tableauMesRoues">
+        <thead>
+        <tr>
+            <th>
+              Utilisations
+            </th>
+            <th>
+              Restaurant 1
+            </th>
+            <th>
+              Restaurant 2
+            </th>
+            <th>
+              Restaurant 3
+            </th>
+            <th>
+              Restaurant 4
+            </th>
+            <th>
+              Restaurant 5
+            </th>
+            <th>
+              Restaurant 6
+            </th>
+            <th>
+              Restaurant 7
+            </th>
+            <th>
+              Restaurant 8
+            </th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr>
+        </tr>
+        </tbody>
+    </table>
+</div>
+<script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+<script src="script.js"></script>
 </body>
 
 </html>

@@ -110,7 +110,7 @@ app.post('/userwheels', async (req, res) => {
 });
 
 // Route des 5 roues les plus utilisées
-app.post('/topwheels', async (req, res) => {
+app.get('/topwheels', async (req, res) => {
     const wheelsCollection = client.db("test").collection("wheels");
 
     // Requête 1 : Sortir les 5 roues les plus utilisées
@@ -125,3 +125,40 @@ app.post('/topwheels', async (req, res) => {
     }
 });
 
+app.get('/userwheels', async (req, res) => {
+    const wheelsCollection = client.db("test").collection("wheels");
+
+    try {
+        const topWheels = await wheelsCollection.find().sort({ utilisations: -1 }).limit(5).toArray();
+
+        res.json(topWheels);
+    } catch (error) {
+        console.error(error);
+        res.status(500).json({ message: "Erreur lors de la récupération des roues les plus utilisées" });
+    }
+});
+
+app.get('/topwheels', async (req, res) => {
+    const wheelsCollection = client.db("test").collection("wheels");
+
+    try {
+        const topWheels = await wheelsCollection.find().sort({ utilisations: -1 }).limit(5).toArray();
+
+        res.json(topWheels);
+    } catch (error) {
+        console.error(error);
+        res.status(500).json({ message: "Erreur lors de la récupération des roues les plus utilisées" });
+    }
+});
+
+app.delete('/userwheels', async (req, res) => {
+    const wheelsCollection = client.db("test").collection("wheels");
+
+    try {
+        await wheelsCollection.deleteMany();
+        res.json({ message: "Toutes les roues ont été supprimées" });
+    } catch (error) {
+        console.error(error);
+        res.status(500).json({ message: "Erreur lors de la suppression des roues" });
+    }
+});
