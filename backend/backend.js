@@ -110,7 +110,7 @@ app.post('/userwheels', async (req, res) => {
 });
 
 // Route des 5 roues les plus utilisées
-app.post('/topwheels', async (req, res) => {
+app.get('/topwheels', async (req, res) => {
     const wheelsCollection = client.db("test").collection("wheels");
 
     // Requête 1 : Sortir les 5 roues les plus utilisées
